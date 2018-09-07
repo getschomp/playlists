@@ -5,6 +5,7 @@ name = "pypi"
 
 [packages]
 pybald = "*"
+graphene-sqlalchemy = "*"
 
 [dev-packages]
 
