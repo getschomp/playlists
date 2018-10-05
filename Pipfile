@@ -6,8 +6,11 @@ name = "pypi"
 [packages]
 pybald = "*"
 graphene-sqlalchemy = "*"
+celery = "*"
 
 [dev-packages]
+alembic = "*"
+ipdb = "*"
 
 [requires]
 python_version = "3.7"
