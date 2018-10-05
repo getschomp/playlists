@@ -23,5 +23,5 @@ Source the environment variables into your shell
 Serve the application (in the virtural env created by poetry)
 
 ```
-python playlists/app.py serve
+python app/start.py serve
 ```

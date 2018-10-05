@@ -635,7 +635,7 @@ python-versions = "*"
 version = "2.1"
 
 [metadata]
-content-hash = "9d980ce1d09ad882f9e18f7ebdfe6f68a7517691a979c792c520e655d03cb33d"
+content-hash = "33c58f9acaa3c7a38b794559bbb8f815b5325221b0f0e452ff72bb42720dc67d"
 platform = "*"
 python-versions = "3.7"
 

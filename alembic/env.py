@@ -2,9 +2,15 @@ from __future__ import with_statement
 from alembic import context
 from sqlalchemy import engine_from_config, pool
 from logging.config import fileConfig
-from pybald import context as pybald_context
+import pybald
 
-from playlists.custom_config import config_overrides
+pybald.bootstrap('alembic/pybald_app.py')
+from pybald.context import config as pybald_config
+
+from pybald.db import models
+
+
+target_metadata = models.Base.metadata
 
 # this is the Alembic Config object, which provides
 # access to the values within the .ini file in use.
@@ -18,19 +24,39 @@ fileConfig(alembic_config.config_file_name)
 # for 'autogenerate' support
 # from myapp import mymodel
 # target_metadata = mymodel.Base.metadata
-target_metadata = None
+target_metadata = target_metadata
 
 # other values from the config, defined by the needs of env.py,
 # can be acquired:
 # my_important_option = config.get_main_option("my_important_option")
 # ... etc.
 
-# context.configure(
-#     connection=connection,
-#     target_metadata=target_metadata
-# )
-#
-alembic_config['sqlalchemy.url'] = config_overrides['database_engine_uri']
+from alembic.config import Config
+alembic_config = Config()
+alembic_config.set_main_option("script_location", "alembic")
+alembic_config.set_main_option("revision_environment", "true")
+alembic_config.set_main_option("sqlalchemy.url", pybald_config.database_engine_uri.replace('%', '%%'))
+alembic_config.set_section_option("alembic:exclude", "tables", "")
+alembic_config.set_section_option("loggers", "keys", "root,sqlalchemy,alembic")
+alembic_config.set_section_option("handlers", "keys", "console")
+alembic_config.set_section_option("formatters", "keys", "generic")
+alembic_config.set_section_option("logger_root", "level", "WARN")
+alembic_config.set_section_option("logger_root", "handlers", "console")
+alembic_config.set_section_option("logger_root", "qualname", "")
+alembic_config.set_section_option("logger_sqlalchemy", "level", "WARN")
+alembic_config.set_section_option("logger_sqlalchemy", "handlers", "")
+alembic_config.set_section_option("logger_sqlalchemy", "qualname", "sqlalchemy.engine")
+alembic_config.set_section_option("logger_alembic", "level", "INFO")
+alembic_config.set_section_option("logger_alembic", "handlers", "")
+alembic_config.set_section_option("logger_alembic", "qualname", "alembic")
+alembic_config.set_section_option("handler_console", "class", "StreamHandler")
+alembic_config.set_section_option("handler_console", "args", "(sys.stderr,)")
+alembic_config.set_section_option("handler_console", "level", "NOTSET")
+alembic_config.set_section_option("handler_console", "formatter", "generic")
+alembic_config.set_section_option("formatter_generic", "format", "{levelname}-5.5s [{name}s] {message}s")
+alembic_config.set_section_option("formatter_generic", "datefmt", "{H}:{M}:{S}")
+
+
 
 def run_migrations_offline():
     """Run migrations in 'offline' mode.
@@ -46,7 +72,10 @@ def run_migrations_offline():
     """
     url = alembic_config.get_main_option("sqlalchemy.url")
     context.configure(
-        url=url, target_metadata=target_metadata, literal_binds=True)
+        url=url,
+        target_metadata=target_metadata,
+        literal_binds=True
+    )
 
     with context.begin_transaction():
         context.run_migrations()
