@@ -11,7 +11,10 @@ class Playlist(models.Model):
             f'<Playlist(id:{self.id}, city:{self.city}, state:{self.state}, '
             f'start_date:{self.start_date}, end_date{self.end_date})>'
         )
-
-    # location_id = models.Column('location_id', models.Integer, models.ForeignKey("location.id"))
+    location_id = models.Column(
+        models.Integer,
+        models.ForeignKey('locations.id'),
+        index=True
+    )
     start_date = models.Column(models.Unicode(1024))
     end_date = models.Column(models.Unicode(1024))

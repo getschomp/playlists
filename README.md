@@ -12,7 +12,7 @@ Setup Database and environment variables in .env.example based on the example.
 
 Activate poetry shell and install the dependencies
 
-```python
+```bash
 poetry shell
 poetry install
 ```
@@ -20,8 +20,14 @@ Source the environment variables into your shell
 
 `source .env`
 
+Run the migrations
+
+```bash
+alembic upgrade head
+```
+
 Serve the application (in the virtural env created by poetry)
 
-```
+```bash
 python app/start.py serve
 ```
