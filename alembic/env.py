@@ -1,9 +1,10 @@
 from __future__ import with_statement
 from alembic import context
-from custom_config import config_overrides
 from sqlalchemy import engine_from_config, pool
 from logging.config import fileConfig
 from pybald import context as pybald_context
+
+from playlists.custom_config import config_overrides
 
 # this is the Alembic Config object, which provides
 # access to the values within the .ini file in use.

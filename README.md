@@ -1,7 +1,6 @@
-# pybald-graphql
+# playlists
 
-
-Setup up pipenv and python 3.
+Setup up poetry and python 3.
 
 Copy .env.example to .env
 
@@ -11,11 +10,18 @@ cp .env.example .env
 
 Setup Database and environment variables in .env.example based on the example.
 
-Activate pipenv and install the dependencies
+Activate poetry shell and install the dependencies
 
 ```python
-pipenv shell
-pipenv install
+poetry shell
+poetry install
 ```
+Source the environment variables into your shell
 
-`$ pipenv shell` will automatically load the .env file
+`source .env`
+
+Serve the application (in the virtural env created by poetry)
+
+```
+python playlists/app.py serve
+```

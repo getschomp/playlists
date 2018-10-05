@@ -7,7 +7,7 @@ from custom_config import config_overrides
 
 config = {**default_config, **config_overrides}
 
-# configure our pybald application
+# configure pybald application
 pybald.configure(config_object=config)
 
 def map(urls):
