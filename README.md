@@ -1,5 +1,9 @@
 # playlists
 
+## Setup
+
+### Virtual Environment
+
 Setup up poetry and python 3, system-wide.
 
 ```bash
@@ -23,6 +27,8 @@ poetry install
 Source the environment variables into your shell
 
 `source .env`
+
+All commands to follow require an activated virtual environment with environment variables sourced in the local shell.
 
 ## Migrations and Seeding
 
