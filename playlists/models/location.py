@@ -1,5 +1,6 @@
 from pybald.db import models
-#
+
+
 class Location(models.Model):
     def __init__(self, *args, **kwargs):
         super(Location, self).__init__(*args, **kwargs)

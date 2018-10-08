@@ -26,8 +26,8 @@ Run the migrations
 alembic upgrade head
 ```
 
-Serve the application (in the virtural env created by poetry)
+Serve the application (in the venv created by poetry)
 
 ```bash
-python app/start.py serve
+python playlists/app.py serve
 ```

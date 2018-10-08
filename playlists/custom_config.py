@@ -1,5 +1,7 @@
 import os
 
+from pybald import default_config
+
 pg_username = os.environ['PG_USERNAME']
 pg_password = os.environ['PG_PASSWORD']
 pg_host = os.environ['PG_HOST']
@@ -14,3 +16,5 @@ DATABASE_URL = (
 config_overrides = dict(
     database_engine_uri=DATABASE_URL,
 )
+
+full_config = {**default_config, **config_overrides}
