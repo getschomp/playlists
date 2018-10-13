@@ -7,6 +7,8 @@ from custom_config import full_config
 pybald.configure(config_object=full_config)
 
 from playlists.tasks.seeds import users
+from playlists.tasks.seeds import playlists
 
 if __name__ == "__main__":
     users.seed()
+    playlists.seed()

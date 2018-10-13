@@ -1,7 +1,7 @@
 [tool.poetry]
 name = "playlists"
 version = "0.1.0"
-description = "A playlists app with pybald and graphql"
+description = "A playlists app with pybald and graphql through graphene-sqlalchemy"
 authors = ["Allison Browne <allison-browne@pluralsight.com>"]
 license = "MIT"
 
@@ -13,8 +13,10 @@ psycopg2 = "*"
 pybald = "^0.5.1"
 python = "3.7"
 sqlalchemy = "*"
+factory_boy = "^2.11"
 
 [tool.poetry.dev-dependencies]
 autoenv = "*"
 ipdb = "^0.11.0"
 pytest = "*"
+tox = "*"

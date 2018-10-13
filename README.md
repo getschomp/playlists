@@ -1,5 +1,30 @@
 # playlists
 
+Playlists uses graphene-sqlalchemy to query data across a model of playlists, users and locations.
+
+Graphql style queries look like 'json without the values' and allow the developer to fetch only the fields needed for a particular page.
+
+An example query,
+```
+{
+ users {
+   username,
+   firstName,
+   lastName,
+   playlists {
+       url,
+       startDate,
+       endDate,
+       location {
+           country,
+           city,
+           state,
+       }
+   }
+ }
+}
+```
+
 ## Setup
 
 ### Virtual Environment
@@ -38,7 +63,7 @@ Run the migrations
 alembic upgrade head
 ```
 
-Seed the database, by running the cli app (will require options eventually)
+Seed the database, by running the cli app
 
 ```bash
 python playlists/cli.py
@@ -51,3 +76,5 @@ Serve the application
 ```bash
 python playlists/app.py serve
 ```
+
+Navigate to `0.0.0.0:8080/index`

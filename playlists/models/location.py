@@ -7,3 +7,4 @@ class Location(models.Model):
 
     city = models.Column(models.Unicode(80))
     state = models.Column(models.Unicode(2))
+    country = models.Column(models.Unicode(128))

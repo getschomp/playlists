@@ -1,3 +1,5 @@
+import json
+
 import pybald
 from pybald import context
 from pybald.core.controllers import Controller, action
@@ -8,28 +10,38 @@ from custom_config import full_config
 # configure pybald application
 pybald.configure(config_object=full_config)
 
-#TODO: move to controllers when extracted
-from playlists.models.user import user_schema
+from playlists.graph_query import schema
 from pybald.context import db
-import json
 
 def map(urls):
-    urls.connect('home', r'/', controller='home')
+    urls.connect('index', r'/index', controller='home')
 
 class HomeController(Controller):
 
     @action
     def index(self, req):
         query = '''
-            query {
-              users {
-                username,
-                firstName
-              }
+        {
+          users {
+            username,
+            firstName,
+            lastName,
+            playlists {
+                url,
+                startDate,
+                endDate,
+                location {
+                    country,
+                    city,
+                    state,
+                }
             }
+          }
+        }
         '''
-        result = user_schema.execute(query, context_value={'session': db.connection})
+        result = schema.execute(query, context_value={'session': db.connection})
         return json.dumps(result.data)
+
 
 app = Router(routes=map, controllers=[HomeController])
 

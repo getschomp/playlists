@@ -10,21 +10,4 @@ class User(models.Model):
     username = models.Column(models.Unicode(1024))
     first_name = models.Column(models.Unicode(1024))
     last_name = models.Column(models.Unicode(1024))
-
-
-class UserResource(SQLAlchemyObjectType):
-    class Meta:
-        model = User
-        only_fields = ('username', 'first_name',)
-        exclude_fields = ('last_name',)
-
-
-class Query(graphene.ObjectType):
-    users = graphene.List(UserResource)
-
-    def resolve_users(self, info):
-        query = UserResource.get_query(info)  # SQLAlchemy query
-        return query().all()
-
-
-user_schema = graphene.Schema(query=Query)
+    secret = models.Column(models.Unicode(1024))
