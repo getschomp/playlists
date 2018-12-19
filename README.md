@@ -46,6 +46,7 @@ Create a new postgres database and use the environment variables in .env.example
 Activate poetry shell and install the dependencies
 
 ```bash
+brew switch python@3 3.7.0 # You made to brew install python 3.7.0
 poetry shell
 poetry install
 ```
@@ -74,7 +75,7 @@ python playlists/cli.py
 Serve the application
 
 ```bash
-python playlists/app.py serve
+python playlists/app.py serve DEBUG=true
 ```
 
 Navigate to `0.0.0.0:8080/index`

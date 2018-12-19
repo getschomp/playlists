@@ -15,6 +15,7 @@ DATABASE_URL = (
 
 config_overrides = dict(
     database_engine_uri=DATABASE_URL,
+     debug=True,
 )
 
 full_config = {**default_config, **config_overrides}
