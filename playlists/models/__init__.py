@@ -1,1 +1,2 @@
-
+from sqlalchemy_bulk_lazy_loader import BulkLazyLoader
+BulkLazyLoader.register_loader()

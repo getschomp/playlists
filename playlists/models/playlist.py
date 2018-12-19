@@ -1,6 +1,7 @@
 import graphene
 from graphene_sqlalchemy import SQLAlchemyObjectType
 from pybald.db import models
+from sqlalchemy.orm import backref, relationship
 
 
 class Playlist(models.Model):
@@ -17,6 +18,11 @@ class Playlist(models.Model):
         models.ForeignKey('locations.id'),
         index=True,
         nullable=True,
+    )
+    location = relationship(
+        'Location',
+        back_populates='playlist',
+        lazy='bulk'
     )
     start_date = models.Column(models.Date())
     end_date = models.Column(models.Date())
