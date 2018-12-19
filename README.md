@@ -75,7 +75,7 @@ python playlists/cli.py
 Serve the application
 
 ```bash
-python playlists/app.py serve DEBUG=true
+python playlists/app.py serve
 ```
 
 Navigate to `0.0.0.0:8080/index`
