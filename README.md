@@ -29,7 +29,9 @@ An example query,
 
 ### Virtual Environment
 
-Setup up poetry and python 3, system-wide.
+Setup up python 3 and poetry.
+
+Command to install poetry, system-wide.
 
 ```bash
 pip install --user poetry
