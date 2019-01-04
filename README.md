@@ -82,7 +82,7 @@ Serve the server side code from the main directory
 python playlists/app.py serve
 ```
 
-Navigate to [0.0.0.0:8080/index]
+Navigate to <0.0.0.0:8080/index>
 
 ## Client
 
@@ -96,9 +96,7 @@ Serve the client side code using
 
 `npm start`
 
-Open [http://localhost:3000] to view it in the browser.
+Open <http://localhost:3000> to view it in the browser.
 
-[0.0.0.0:8080/index]: 0.0.0.0:8080/index
-[http://localhost:3000]: http://localhost:3000
 [graphene-sqlalchemy]: https://github.com/graphql-python/graphene-sqlalchemy
 [poetry]: https://poetry.eustace.io/
