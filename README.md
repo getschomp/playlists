@@ -82,7 +82,7 @@ Serve the server side code from the main directory
 python playlists/app.py serve
 ```
 
-Navigate to <0.0.0.0:8080/index>
+Navigate to <http://0.0.0.0:8080/index>
 
 ## Client
 
