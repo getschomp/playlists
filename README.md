@@ -98,7 +98,7 @@ Serve the client side code using
 
 Open [http://localhost:3000] to view it in the browser.
 
-[0.0.0.0:8080/index]: (0.0.0.0:8080/index)
-[http://localhost:3000]: (http://localhost:3000)
-[graphene-sqlalchemy]: (https://github.com/graphql-python/graphene-sqlalchemy)
-[poetry]: (https://poetry.eustace.io/)
+[0.0.0.0:8080/index]: 0.0.0.0:8080/index
+[http://localhost:3000]: http://localhost:3000
+[graphene-sqlalchemy]: https://github.com/graphql-python/graphene-sqlalchemy
+[poetry]: https://poetry.eustace.io/
