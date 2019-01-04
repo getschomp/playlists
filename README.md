@@ -2,7 +2,7 @@
 
 ## Server
 
-Playlists uses graphene-sqlalchemy to query data across a model of playlists, users and locations.
+Playlists uses [graphene-sqlalchemy] to query data across a model of playlists, users and locations.
 
 Graphql style queries look like 'json without the values' and allow the developer to fetch only the fields needed for a particular page.
 
@@ -31,7 +31,7 @@ An example query,
 
 #### Virtual Environment
 
-Setup up python 3 and poetry.
+Setup up python 3 and [poetry].
 
 Command to install poetry, system-wide.
 
@@ -97,3 +97,7 @@ Serve the client side code using
 `npm start`
 
 Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+
+
+[graphene-sqlalchemy]: (https://github.com/graphql-python/graphene-sqlalchemy)
+[poetry]: (https://poetry.eustace.io/)
