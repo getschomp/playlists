@@ -20,7 +20,9 @@ class HomeController(Controller):
 
     @action
     def index(self, req):
-        query = '''
+        '''Execute Arbitrary graphql queries with
+
+        Example Query:
         {
           users {
             username,
@@ -38,8 +40,11 @@ class HomeController(Controller):
             }
           }
         }
+
+        Example http Request:
+        GET http://localhost:8080/index?query={users{username,firstName,lastName,playlists{url,startDate,endDate,location{country,city,state}}}}
         '''
-        result = schema.execute(query, context_value={'session': db.connection})
+        result = schema.execute(req.GET.get('query'), context_value={'session': db.connection})
         return json.dumps(result.data)
 
 

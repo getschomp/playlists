@@ -57,24 +57,38 @@ class UserResource(SQLAlchemyObjectType):
 class Query(graphene.ObjectType):
     users = graphene.List(UserResource)
 
-    playlists = graphene.List(PlaylistResource)
-    playlist = graphene.Field(PlaylistResource)
+    playlists = graphene.List(PlaylistResource, id=graphene.Int())
+    playlist = graphene.Field(PlaylistResource, id=graphene.Int())
 
     playlist_users = graphene.List(PlaylistUserResource)
-    playlist_user = graphene.Field(PlaylistUserResource)
+    playlist_user = graphene.Field(PlaylistUserResource, id=graphene.Int())
 
     def resolve_users(self, info):
-        query = UserResource.get_query(info)()  # SQLAlchemy query
+        query = UserResource.get_query(info)()
         return query.all()
 
-    def resolve_playlists(self, info):
-        query = PlaylistResource.get_query(info)()  # SQLAlchemy query
+    def resolve_playlists(self, info, id):
+        query = PlaylistResource.get_query(info)()
         query = query.options(joinedload('location'))
+        if id:
+            query = query.get(id)
         return query.all()
 
     def resolve_playlist_users(self, info):
-        query = PlaylistUserResource.get_query(info)()  # SQLAlchemy query
+        query = PlaylistUserResource.get_query(info)()
         return query.all()
 
+    def resolve_playlist(self, info, id):
+        query = PlaylistResource.get_query(info)()
+        if id:
+            query = query.filter(Playlist.id == id)
+
+        return query.first()
+
+    def resolve_playlist_user(self, info, id):
+        query = PlaylistUserResource.get_query(info)()
+        if id:
+            query = query.filter(PlaylistUser.id == id)
+        return query.first()
 
 schema = graphene.Schema(query=Query, types=[UserResource, PlaylistResource, PlaylistUserResource, LocationResource])
