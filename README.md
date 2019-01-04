@@ -1,5 +1,7 @@
 # playlists
 
+## Server
+
 Playlists uses graphene-sqlalchemy to query data across a model of playlists, users and locations.
 
 Graphql style queries look like 'json without the values' and allow the developer to fetch only the fields needed for a particular page.
@@ -25,9 +27,9 @@ An example query,
 }
 ```
 
-## Setup
+### Setup
 
-### Virtual Environment
+#### Virtual Environment
 
 Setup up python 3 and poetry.
 
@@ -58,7 +60,7 @@ Source the environment variables into your shell
 
 All commands to follow require an activated virtual environment with environment variables sourced in the local shell.
 
-## Migrations and Seeding
+#### Migrations and Seeding
 
 Run the migrations
 
@@ -72,12 +74,26 @@ Seed the database, by running the cli app
 python playlists/cli.py
 ```
 
-## Serve
+### Serve
 
-Serve the application
+Serve the server side code from the main directory
 
 ```bash
 python playlists/app.py serve
 ```
 
 Navigate to `0.0.0.0:8080/index`
+
+## Client
+
+### Setup
+
+Make sure npm installed
+
+### Serve
+
+Serve the client side code using
+
+`npm start`
+
+Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
