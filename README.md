@@ -4,8 +4,6 @@
 
 Playlists uses [graphene-sqlalchemy] to query data across a model of playlists, users and locations.
 
-Graphql style queries look like 'json without the values' and allow the developer to fetch only the fields needed for a particular page.
-
 An example query,
 ```
 {
